@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assemble Lasagna</title>
+    <link rel="stylesheet" href="meatSauce.css">
+</head>
+<body>
+    <header>
+        <h1>Assemble Lasagna</h1>
+    </header>
+
+    <h2>Add Ingredients Top to Bottom</h2>
+
+    <main id="game-container">
+        <div id="ingredients-container">
+            <div class="ingredient" id="ingredient-oven">
+                <img src="images/oven.jpg" alt="Oven">
+                <p>Turn on the Oven</p>
+                <input type="text" id="oven-input" placeholder="Type 350">
+                <button id="oven-submit">Submit</button>
+            </div>
+            <div class="ingredient clickable" id="ingredient-meat-sauce">
+                <img src="images/meatSaucewithSeasoning.jpg" alt="Meat Sauce">
+                <p>Meat Sauce</p>
+            </div>
+            <div class="ingredient clickable" id="ingredient-noodles">
+                <img src="images/noodles.jpg" alt="Lasagna Noodles">
+                <p>Lasagna Noodles</p>
+            </div>
+            <div class="ingredient clickable" id="ingredient-cheese-mixture">
+                <img src="images/CheeseMix.jpg" alt="Cheese Mixture">
+                <p>Cheese Mixture</p>
+            </div>
+        </div>
+        
+        
+
+        <div id="main-image">
+            <img id="current-image" src="images/lasagnaDish.jpg" alt="Empty Lasagna Dish">
+        </div>
+
+        <div id="instruction">
+            <p>Click the ingredients to assemble the lasagna!</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Delicious Recipes. Lea Wilhelmer</p>
+    </footer>
+
+    <script src="finishing-lasagna.js"></script>
+</body>
+</html>

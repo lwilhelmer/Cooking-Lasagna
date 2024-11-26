@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Lasagna Recipe</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <header>
+        <h1>Make Lasagna Step-by-Step</h1>
+    </header>
+
+    <section class="recipe-intro">
+        <b>This interactive recipe will guide you step-by-step to make a delicious lasagna. Click the button below to start!</b>
+    </section>
+
+    <section class="recipe">
+        <ul>
+        <p>Ingredients</p>
+            <li>12 lasagna noodles uncooked</li>
+            <li>4 cups shredded mozzarella cheese divided</li>
+            <li>½ cup shredded Parmesan cheese shredded and divided</li>
+            <li>¾ teaspoon salt more to taste</li>
+            <p>Tomato Sauce</p>
+            <li>1 pound lean ground beef</li>
+            <li>1 yellow onion diced</li>
+            <li>2 cloves garlic minced</li>
+            <li>36 ounces pasta sauce</li>
+            <li>2 tablespoons tomato paste</li>
+            <li>1 teaspoon Italian seasoning</li>
+            <p>Mixture</p> 
+            <li>2 cups ricotta cheese or cottage cheese</li>
+            <li>¼ cup chopped fresh parsley</li>
+            <li>1 large egg beaten</li>
+        </ul>
+    </section>
+
+    <section class="interactive-recipe">
+        <button id="next-step-button">Start Cooking</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Delicious Recipes. Lea Wilhelmer</p>
+    </footer>
+
+    <script>
+        document.getElementById("next-step-button").addEventListener("click", function() {
+            window.location.href = "meatSauce.html";
+        });
+    </script>
+</body>
+</html>

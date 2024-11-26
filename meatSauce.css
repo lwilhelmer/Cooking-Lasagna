@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+    height: 100vh;
+}
+
+header {
+    background-color: #8b0000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+h2 {
+    font-weight: bold;
+    margin-top: 2%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+#ingredients-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 250px;
+    margin-right: 20px;
+}
+
+.ingredient {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.ingredient:hover {
+    transform: scale(1.1);
+}
+
+.ingredient img {
+    width: 50%;
+    height: auto;
+}
+
+
+#cooking-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+
+#main-image {
+    text-align: center;
+    margin: 20px;
+}
+
+#current-image {
+    max-width: 50%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#current-instruction {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+#instruction {
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 1%;
+    background-color: #333;
+    color: #fff;
+    margin-top: 3%;
+    margin-bottom: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
