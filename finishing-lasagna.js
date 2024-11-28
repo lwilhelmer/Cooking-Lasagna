@@ -1,4 +1,3 @@
-// Updated steps with oven input validation
 const steps = [
     { id: "oven", instruction: "Great! You turned on the oven to 350 degrees.", image: "images/oven.jpg" },
     { id: "meat-sauce", instruction: "Great! You added the sauce to the lasagna.", image: "images/meatInPan.jpg" },
@@ -12,60 +11,53 @@ let layerCount = 0;
 const instructionDisplay = document.getElementById("instruction");
 const currentImage = document.getElementById("current-image");
 
-// Handle the oven step
+// Handle oven input
 document.getElementById("oven-submit").addEventListener("click", function () {
     const ovenInput = document.getElementById("oven-input").value.trim();
-
     if (ovenInput === "350") {
         currentImage.src = steps[currentStep].image;
         instructionDisplay.textContent = steps[currentStep].instruction;
-
-        // Hide the oven input box and proceed to the next step
         document.getElementById("ingredient-oven").style.display = "none";
         currentStep++;
     } else {
         instructionDisplay.textContent = "Please type '350' to turn on the oven.";
     }
 });
-
-// Handle the ingredient click for other steps
+// Handle ingredient clicks
 function handleIngredientClick(event) {
     const ingredientId = event.target.closest(".ingredient").id.replace('ingredient-', '');
     const step = steps[currentStep];
 
+    console.log("Current step:", currentStep, "Ingredient ID:", ingredientId);
+
     if (step.id === ingredientId) {
-        // Update the main image and instruction
         currentImage.src = step.image;
         instructionDisplay.textContent = step.instruction;
-
-        // Hide the ingredient once it's clicked
         document.getElementById(`ingredient-${ingredientId}`).style.display = "none";
-
-        // Move to the next step
         currentStep++;
         layerCount++;
 
-        // Check if layers are done or repeat
-        if (layerCount % 3 === 0 && layerCount < 9) {
-            instructionDisplay.textContent = "Repeat the layers: Sauce, Noodles, Cheese.";
-        }
+        console.log("Layer count:", layerCount); // Debugging layer count
 
-        if (layerCount === 9) {
-            instructionDisplay.textContent = "Lasagna is ready to bake! Now, let's put it in the oven!";
-            showNextStepButton();
+        if (layerCount === 4) {
+            console.log("All layers added. Showing the next button...");
+            showNextStepButton(); // Show the button after all layers are added
         }
     } else {
-        instructionDisplay.textContent = "Please follow the steps in order!";
+        instructionDisplay.textContent = "Please follow the steps in order.";
     }
 }
 
-// Show the "Next Step" button after lasagna is assembled
+// Show the 'Next Step' button after all layers are added
 function showNextStepButton() {
-    const nextButton = document.createElement("button");
-    nextButton.textContent = "Bake Lasagna!";
-    nextButton.id = "next-step-button";
-    nextButton.onclick = () => window.location.href = "bake-lasagna.html";
+    console.log("Creating the 'Next Step' button...");
 
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "Next Step";
+    nextButton.id = "next-step-button";
+    nextButton.onclick = () => window.location.href = "baking.html"; 
+
+    // Appending the button to the game container
     document.getElementById("game-container").appendChild(nextButton);
 }
 

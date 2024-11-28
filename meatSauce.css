@@ -32,22 +32,34 @@ main {
     align-items: flex-start;
     padding: 20px;
     flex-wrap: wrap;
+    padding-bottom: 80px; 
 }
 
+/* Flex container for ingredients and main image */
+#cooking-area {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Ingredients container on the left */
 #ingredients-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    width: 250px;
-    margin-right: 20px;
+    width: 300px;
 }
 
+/* Individual ingredient styling */
 .ingredient {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
+    margin: 10px 0;
     cursor: pointer;
     transition: transform 0.3s;
 }
@@ -57,30 +69,29 @@ main {
 }
 
 .ingredient img {
-    width: 50%;
+    width: 80%;
     height: auto;
-}
-
-
-#cooking-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 #main-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin: 20px;
 }
 
 #current-image {
-    max-width: 50%;
+    width: 400px; /* Set a specific width */
     height: auto;
     border: 2px solid #ccc;
     border-radius: 8px;
     margin-bottom: 10px;
 }
+
+
 
 #current-instruction {
     font-size: 1.2rem;
@@ -88,11 +99,42 @@ main {
     margin-top: 10px;
 }
 
+
 #instruction {
     margin-top: 20px;
     font-size: 1.5em;
     text-align: center;
 }
+
+#baking-step {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#baking-timer {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+#bake-lasagna-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#bake-lasagna-button:hover {
+    background-color: #218838;
+}
+
+#next-step-button {
+    display: block !important;
+}
+
 
 footer {
     text-align: center;

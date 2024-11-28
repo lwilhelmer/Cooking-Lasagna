@@ -14,27 +14,36 @@ const currentImage = document.getElementById("current-image");
 
 function handleIngredientClick(event) {
     const ingredientId = event.target.closest(".ingredient").id.replace("ingredient-", "");
-    const step = steps.find(step => step.id === ingredientId);
+    const step = steps[currentStep];
 
-    if (step) {
+    if (step.id === ingredientId) {
+        // Update the image and instruction
         currentImage.src = step.image;
         instructionDisplay.textContent = step.instruction;
 
+        // Hide the ingredient after it's clicked
         event.target.closest(".ingredient").style.display = "none";
 
         currentStep++;
 
         if (currentStep >= steps.length) {
             instructionDisplay.textContent = "The meat sauce is ready! Move on to the next step.";
+            showNextStepButton();
         }
+    } else {
+        instructionDisplay.textContent = "Please add ingredients in the correct order!";
     }
 }
 
-document.querySelectorAll(".ingredient").forEach((ingredient) => {
-    ingredient.addEventListener("click", (event) => {
-        const ingredientName = event.target.textContent;
-        console.log(`You clicked ${ingredientName}`);
-        document.getElementById("current-instruction").textContent = `You added ${ingredientName}!`;
-    });
-});
+function showNextStepButton() {
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "Next Step";
+    nextButton.id = "next-step-button";
+    nextButton.onclick = () => window.location.href = "cheese-mix.html";
 
+    document.getElementById("game-container").appendChild(nextButton);
+}
+
+document.querySelectorAll(".ingredient.clickable").forEach(ingredient => {
+    ingredient.addEventListener("click", handleIngredientClick);
+});
