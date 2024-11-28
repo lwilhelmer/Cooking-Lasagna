@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lasagna Cooking Instructions</title>
+    <link rel="stylesheet" href="meatSauce.css">
+</head>
+<body>
+    <header>
+        <h1>Lasagna Cooking Instructions</h1>
+    </header>
+    <h2>Add Ingredients Top to Bottom</h2>
+
+    <main id="game-container">
+        <div id="ingredients-container">
+            <div class="ingredient clickable" id="ingredient-beef">
+                <img src="images/groundBeef.jpg" alt="Beef">
+                <p>Beef</p>
+            </div>
+            <div class="ingredient clickable" id="ingredient-onion">
+                <img src="images/onion.jpg" alt="Onion">
+                <p>Onion</p>
+            </div>
+            <div class="ingredient clickable" id="ingredient-garlic">
+                <img src="images/garlic.jpg" alt="Garlic">
+                <p>Garlic</p>
+            </div>
+            <div class="ingredient clickable" id="ingredient-tomato-sauce">
+                <img src="images/sauce.jpg" alt="Tomato Sauce">
+                <p>Tomato Sauce</p>
+            </div>
+            <div class="ingredient clickable" id="ingredient-seasoning">
+                <img src="images/italianSeasoning.jpg" alt="Italian Seasoning">
+                <p>Italian Seasoning</p>
+            </div>
+            <div class="ingredient clickable" id="ingredient-salt">
+                <img src="images/salt.jpg" alt="Salt">
+                <p>Salt</p>
+            </div>
+        </div>
+
+        <div id="main-image">
+            <img id="current-image" src="images/pan.jpg" alt="Start Cooking">
+            <p id="current-instruction">Click an ingredient to start cooking!</p>
+        </div>
+        
+
+        <div id="instruction">
+            <p>Click the ingredients to add them to the pot!</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Delicious Recipes. Lea Wilhelmer</p>
+    </footer>
+
+    <script>
+        document.getElementById("next-step-button").addEventListener("click", function() {
+            window.location.href = "cheese-mix.html"; 
+        });
+    </script>
+
+    <script src="meatSauce.js"></script>
+</body>
+</html>
