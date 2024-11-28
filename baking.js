@@ -1,110 +1,62 @@
-const steps = [
-    { id: "oven", instruction: "Great! You turned on the oven to 350 degrees.", image: "images/oven.jpg" },
-    { id: "meat-sauce", instruction: "Great! You added the sauce to the lasagna.", image: "images/meatInPan.jpg" },
-    { id: "noodles", instruction: "Great! You added the lasagna noodles.", image: "images/meatAndNoodles.jpg" },
-    { id: "cheese-mixture", instruction: "Great! You added the cheese mixture.", image: "images/meatAndNoodlesAndCheese.jpg" },
-];
+let bakingTime = 45 * 60; // 45 minutes in seconds
+let additionalTime = 15 * 60; // 15 minutes in seconds
+let broilTime = 2 * 60; // 2 minutes in seconds
 
-let currentStep = 0;
-let layerCount = 0;
+let timerInterval;
+let timeLeft = bakingTime;
 
-const instructionDisplay = document.getElementById("instruction");
-const currentImage = document.getElementById("current-image");
-
-// Handle oven input
-document.getElementById("oven-submit").addEventListener("click", function () {
-    const ovenInput = document.getElementById("oven-input").value.trim();
-    if (ovenInput === "350") {
-        currentImage.src = steps[currentStep].image;
-        instructionDisplay.textContent = steps[currentStep].instruction;
-        document.getElementById("ingredient-oven").style.display = "none";
-        currentStep++;
-    } else {
-        instructionDisplay.textContent = "Please type '350' to turn on the oven.";
-    }
-});
-
-// Handle ingredient clicks
-function handleIngredientClick(event) {
-    const ingredientId = event.target.closest(".ingredient").id.replace('ingredient-', '');
-    const step = steps[currentStep];
-
-    if (step.id === ingredientId) {
-        currentImage.src = step.image;
-        instructionDisplay.textContent = step.instruction;
-        document.getElementById(`ingredient-${ingredientId}`).style.display = "none";
-        currentStep++;
-        layerCount++;
-
-        // Check layer count and show the baking button after all steps
-        if (layerCount === 4) {
-            showBakingButton();
-        }
-    } else {
-        instructionDisplay.textContent = "Please follow the steps in order.";
-    }
-}
-
-// Show the "Start Baking" button
-function showBakingButton() {
-    const bakingButton = document.createElement("button");
-    bakingButton.textContent = "Start Baking";
-    bakingButton.id = "bake-lasagna-button";
-    bakingButton.onclick = startBaking;
-
-    document.getElementById("baking-step").appendChild(bakingButton);
-}
-
-// Simulate baking process with timer
-function startBaking() {
-    instructionDisplay.textContent = "Cover with foil and bake for 45 minutes.";
-    currentImage.src = "images/lasagnaCoveredWithFoil.jpg";
+function coverLasagnaWithFoil() {
+    // Change the lasagna image to the covered one
+    document.getElementById("lasagna-img").src = "images/lasagnacovered.jpg";
+    document.getElementById("baking-instructions").textContent = "Lasagna is covered. Bake for 45 minutes.";
     
-    // Timer for 45 minutes of baking
-    startTimer(45, function () {
-        instructionDisplay.textContent = "Remove foil, add cheese, and bake uncovered for 15 minutes.";
-        currentImage.src = "images/lasagnaWithExtraCheese.jpg";
-        
-        // Timer for 15 minutes of uncovered baking
-        startTimer(15, function () {
-            instructionDisplay.textContent = "Broil for 2-3 minutes if desired.";
-            currentImage.src = "images/lasagnaBakingUncovered.jpg";
-            
-            // Timer for broiling
-            setTimeout(() => {
-                instructionDisplay.textContent = "Rest for 15 minutes before cutting.";
-                currentImage.src = "images/finishedLasagna.jpg";
-                
-                // Timer for resting
-                startTimer(15, function () {
-                    instructionDisplay.textContent = "Lasagna is ready! Enjoy your meal!";
-                    currentImage.src = "images/finishedLasagna.jpg";
-                });
-            }, 2000); // Broil for 2-3 minutes
-        });
-    });
-}
-
-// Start the countdown timer and display remaining time
-function startTimer(minutes, callback) {
-    const timerDisplay = document.getElementById("timer-display");
-    let timeRemaining = minutes * 60; // Convert minutes to seconds
+    // Show the timer and start button
+    document.getElementById("timer").style.display = "block";
+    document.getElementById("start-timer").style.display = "inline-block";
     
-    const interval = setInterval(function () {
-        const minutesLeft = Math.floor(timeRemaining / 60);
-        const secondsLeft = timeRemaining % 60;
-        
-        timerDisplay.textContent = `Time remaining: ${minutesLeft}m ${secondsLeft}s`;
-        timeRemaining--;
-        
-        if (timeRemaining < 0) {
-            clearInterval(interval);
-            callback();
-        }
-    }, 1000); // Update every second
+    // Hide the foil image and text
+    document.getElementById("foil-img").style.display = "none";
+    document.getElementById("lasagna-images").querySelector("p").style.display = "none";
 }
 
-// Add event listeners to ingredients
-document.querySelectorAll(".ingredient.clickable").forEach(ingredient => {
-    ingredient.addEventListener("click", handleIngredientClick);
-});
+function startTimer() {
+    document.getElementById("start-timer").disabled = true;
+    updateTimerDisplay();
+
+    timerInterval = setInterval(function() {
+        if (timeLeft > 0) {
+            timeLeft--;
+            updateTimerDisplay();
+        } else {
+            clearInterval(timerInterval);
+            // Once the first 45 minutes are over, show the next steps
+            document.getElementById("baking-instructions").textContent = "Remove the foil and sprinkle the top with cheese.";
+            document.getElementById("additional-steps").style.display = "block";
+            startAdditionalTimer(); // Start the 15 minute timer
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById("time-left").textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+}
+
+function startAdditionalTimer() {
+    // Start the 15-minute baking time for uncovered lasagna
+    timeLeft = additionalTime;
+    setTimeout(function() {
+        document.getElementById("baking-instructions").textContent = "Broil for 2-3 minutes if desired.";
+        startBroilTimer();
+    }, additionalTime * 1000);
+}
+
+function startBroilTimer() {
+    // Broil for 2-3 minutes
+    timeLeft = broilTime;
+    setTimeout(function() {
+        document.getElementById("baking-instructions").textContent = "Rest for at least 15 minutes before cutting.";
+        alert("Baking process complete! Rest before serving.");
+    }, broilTime * 1000);
+}

@@ -3,51 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lasagna Baking Process</title>
+    <title>Bake the Lasagna</title>
     <link rel="stylesheet" href="meatSauce.css">
 </head>
 <body>
     <header>
-        <h1>Assemble and Bake Lasagna</h1>
+        <h1>Bake the Lasagna</h1>
     </header>
 
-    <h2>Add Ingredients and Begin Baking</h2>
-
     <main id="game-container">
-        <div id="ingredients-container">
-            <div class="ingredient" id="ingredient-oven">
-                <img src="images/oven.jpg" alt="Oven">
-                <p>Turn on the Oven</p>
-                <input type="text" id="oven-input" placeholder="Type 350">
-                <button id="oven-submit">Submit</button>
+        <div id="baking-steps">
+            <h2>Follow the Baking Steps</h2>
+            <p id="baking-instructions">Cover with foil and bake for 45 minutes.</p>
+            
+            <!-- Lasagna and foil images -->
+            <div id="lasagna-images">
+                <img id="lasagna-img" src="images/lasagna2.jpg" alt="Uncovered Lasagna" />
+                <img id="foil-img" src="images/foil.jpg" alt="Foil" style="cursor: pointer;" onclick="coverLasagnaWithFoil()" />
+                <p>Click the foil to cover the lasagna with foil!</p>
             </div>
-            <div class="ingredient clickable" id="ingredient-meat-sauce">
-                <img src="images/meatSaucewithSeasoning.jpg" alt="Meat Sauce">
-                <p>Meat Sauce</p>
+
+            <div id="timer" style="display: none;">
+                <p>Time Left: <span id="time-left">45:00</span> minutes</p>
             </div>
-            <div class="ingredient clickable" id="ingredient-noodles">
-                <img src="images/noodles.jpg" alt="Lasagna Noodles">
-                <p>Lasagna Noodles</p>
-            </div>
-            <div class="ingredient clickable" id="ingredient-cheese-mixture">
-                <img src="images/CheeseMix.jpg" alt="Cheese Mixture">
-                <p>Cheese Mixture</p>
-            </div>
-        </div>
-        
-        <div id="main-image">
-            <img id="current-image" src="images/lasagnaDish.jpg" alt="Empty Lasagna Dish">
+            <button id="start-timer" onclick="startTimer()" style="display: none;">Start Timer</button>
         </div>
 
-        <div id="instruction">
-            <p>Click the ingredients to assemble the lasagna!</p>
+        <div id="additional-steps" style="display: none;">
+            <h3>Next Steps:</h3>
+            <p>Remove the foil and sprinkle the top of the lasagna with the remaining 2 ½ cups mozzarella cheese and ¼ cup parmesan cheese.</p>
+            <p>Bake uncovered for an additional 15 minutes or until browned and bubbly. Broil for 2-3 minutes if desired.</p>
+            <p>Rest for at least 15 minutes before cutting.</p>
         </div>
-
-        <div id="baking-step">
-            <!-- The "Start Baking" button will appear here -->
-        </div>
-
-        <div id="timer-display"></div>
     </main>
 
     <footer>
