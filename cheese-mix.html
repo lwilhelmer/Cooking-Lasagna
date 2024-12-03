@@ -8,44 +8,42 @@
 </head>
 <body>
     <header>
-        <h1>Make Cheese Mixture</h1>
+        <h1>Lasagna Cooking Instructions</h1>
     </header>
-
     <h2>Add Ingredients Top to Bottom</h2>
 
     <main id="game-container">
-        <div id="ingredients-container">
-
-            <div class="ingredient clickable" id="ingredient-mozzarella">
-                <img src="images/mozarella.jpg" alt="Mozzarella">
-                <p>Mozzarella</p>
+        <div id="cooking-area">
+            <div id="ingredients-container">
+                <div class="ingredient clickable" id="ingredient-mozzarella">
+                    <img src="images/mozarella.jpg" alt="Mozzarella">
+                    <p>4 cups Mozzarella</p>
+                </div>
+                <div class="ingredient clickable" id="ingredient-parmesan">
+                    <img src="images/parmesan.jpg" alt="Parmesan">
+                    <p>½ cup Parmesan</p>
+                </div>
+                <div class="ingredient clickable" id="ingredient-ricotta">
+                    <img src="images/ricotta.jpg" alt="Ricotta">
+                    <p>2 cups Ricotta</p>
+                </div>
+                <div class="ingredient clickable" id="ingredient-parsley">
+                    <img src="images/parsley.jpg" alt="Parsley">
+                    <p>¼ cup Parsley</p>
+                </div>
+                <div class="ingredient clickable" id="ingredient-egg">
+                    <img src="images/egg.jpg" alt="Egg">
+                    <p>1 Egg</p>
+                </div>
             </div>
-                
-            <div class="ingredient clickable" id="ingredient-parmesan">
-                <img src="images/parmesan.jpg" alt="Parmesan">
-                <p>Parmesan</p>
-            </div>
-            <div class="ingredient clickable" id="ingredient-ricotta">
-                <img src="images/ricotta.jpg" alt="Ricotta">
-                <p>Ricotta</p>
-            </div>
-            <div class="ingredient clickable" id="ingredient-parsley">
-                <img src="images/parsley.jpg" alt="Parsley">
-                <p>Parsley</p>
-            </div>
-            <div class="ingredient clickable" id="ingredient-egg">
-                <img src="images/egg.jpg" alt="Egg">
-                <p>Egg</p>
+            <div id="main-image">
+                <img id="current-image" src="images/bowl.jpg" alt="Bowl for Cheese Mixture">
+                <p id="current-instruction">Click the ingredients to make the cheese mixture!</p>
             </div>
         </div>
-
-        <div id="main-image">
-            <img id="current-image" src="images/bowl.jpg" alt="Bowl for Cheese Mixture">
-        </div>
-
-        <div id="instruction">
-            <p>Click the ingredients to make the cheese mixture!</p>
-        </div>
+        <a href="index.html" target="_blank">
+            <button>Back to Recipe</button>
+        </a>
     </main>
 
     <footer>

@@ -52,7 +52,7 @@ function handleIngredientClick(event) {
         }
 
         if (layerCount === 3) {
-            instructionDisplay.textContent = "Lasagna is ready to bake! Now, let's put it in the oven!";
+            instructionDisplay.textContent = "Repeat the Layers: Sauce, Noodles, Cheese then cover it with foil and put it in the oven!";
             showNextStepButton();
         }
     } else {

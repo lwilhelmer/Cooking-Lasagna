@@ -11,9 +11,11 @@
         <h1>Bake the Lasagna</h1>
     </header>
 
+    <h2>Follow the Baking Steps</h2>
+
     <main id="game-container">
         <div id="baking-steps">
-            <h2>Follow the Baking Steps</h2>
+            
             <p id="baking-instructions">Cover with foil and bake for 45 minutes.</p>
             
             <!-- Lasagna and foil images -->
@@ -22,12 +24,13 @@
                 <img id="foil-img" src="images/foil.jpg" alt="Foil" style="cursor: pointer;" onclick="coverLasagnaWithFoil()" />
                 <p>Click the foil to cover the lasagna with foil!</p>
             </div>
-
+            
             <div id="timer" style="display: none;">
                 <p>Time Left: <span id="time-left">45:00</span> minutes</p>
             </div>
             <button id="start-timer" onclick="startTimer()" style="display: none;">Start Timer</button>
-        </div>
+            <button id="skip-button" onclick="skipToFinished()">Skip Timer</button>
+            
 
         <div id="additional-steps" style="display: none;">
             <h3>Next Steps:</h3>
@@ -35,6 +38,7 @@
             <p>Bake uncovered for an additional 15 minutes or until browned and bubbly. Broil for 2-3 minutes if desired.</p>
             <p>Rest for at least 15 minutes before cutting.</p>
         </div>
+
     </main>
 
     <footer>

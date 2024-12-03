@@ -1,4 +1,3 @@
-// Define the steps and images for the cheese mixture
 const steps = [
     { id: "mozzarella", instruction: "Great! You added the mozzarella to the bowl.", image: "images/MozarellaInBowl.jpg" },
     { id: "parmesan", instruction: "Great! You added the parmesan to the bowl.", image: "images/MozarellaAndParmesan.jpg" },
@@ -9,46 +8,41 @@ const steps = [
 
 let currentStep = 0;
 
-const instructionDisplay = document.getElementById("instruction");
+const instructionDisplay = document.getElementById("current-instruction");
 const currentImage = document.getElementById("current-image");
 
-// Handle the ingredient click for the cheese mixture
 function handleIngredientClick(event) {
-    const ingredientId = event.target.closest(".ingredient").id.replace('ingredient-', '');
+    const ingredientId = event.target.closest(".ingredient").id.replace("ingredient-", "");
+    const step = steps[currentStep];
 
-    const step = steps.find(step => step.id === ingredientId);
-
-    if (step) {
-        // Update the main image and instruction
+    if (step && step.id === ingredientId) {
+        // Update the image and instruction
         currentImage.src = step.image;
         instructionDisplay.textContent = step.instruction;
 
-        // Hide the ingredient once it's clicked
+        // Hide the ingredient after it's clicked
         event.target.closest(".ingredient").style.display = "none";
 
-        // Move to the next step
         currentStep++;
 
-        // If all ingredients are added, show the next step button
         if (currentStep >= steps.length) {
-            instructionDisplay.textContent = "Cheese mixture is ready! Now, let's assamble the Lasagna!";
+            instructionDisplay.textContent = "Cheese mixture is ready! Move on to the next step.";
             showNextStepButton();
         }
+    } else {
+        instructionDisplay.textContent = "Please add the ingredients in the correct order!";
     }
 }
 
-// Show the "Next Step" button when the meat sauce is complete
 function showNextStepButton() {
     const nextButton = document.createElement("button");
-    nextButton.textContent = "Next Step: Assamble Lasagna";
+    nextButton.textContent = "Next Step";
     nextButton.id = "next-step-button";
-    nextButton.onclick = () => window.location.href = "finishing-lasagna.html"; // Navigation to the cheese mixture page
+    nextButton.onclick = () => window.location.href = "finishing-lasagna.html";
 
     document.getElementById("game-container").appendChild(nextButton);
 }
 
-
-// Add event listeners to ingredients
-document.querySelectorAll(".ingredient").forEach(ingredient => {
+document.querySelectorAll(".ingredient.clickable").forEach(ingredient => {
     ingredient.addEventListener("click", handleIngredientClick);
 });

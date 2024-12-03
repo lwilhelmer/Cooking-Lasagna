@@ -14,35 +14,45 @@
     <h2>Add Ingredients Top to Bottom</h2>
 
     <main id="game-container">
-        <div id="ingredients-container">
-            <div class="ingredient" id="ingredient-oven">
-                <img src="images/oven.jpg" alt="Oven">
-                <p>Turn on the Oven</p>
-                <input type="text" id="oven-input" placeholder="Type 350">
-                <button id="oven-submit">Submit</button>
+        <div id="cooking-area">
+            <!-- Ingredients on the left side -->
+            <div id="ingredients-container">
+                <div class="ingredient" id="ingredient-oven">
+                    <img src="images/oven.jpg" alt="Oven">
+                    <p>Turn on the Oven</p>
+                    <input type="text" id="oven-input" placeholder="Type 350">
+                    <button id="oven-submit">Submit</button>
+                </div>
+                <div class="ingredient clickable" id="ingredient-meat-sauce">
+                    <img src="images/meatSaucewithSeasoning.jpg" alt="Meat Sauce">
+                    <p>1 cup Meat Sauce</p>
+                </div>
+                <div class="ingredient clickable" id="ingredient-noodles">
+                    <img src="images/noodles.jpg" alt="Lasagna Noodles">
+                    <p>Lasagna Noodles</p>
+                </div>
+                <div class="ingredient clickable" id="ingredient-cheese-mixture">
+                    <img src="images/CheeseMix.jpg" alt="Cheese Mixture">
+                    <p>Cheese Mixture</p>
+                </div>
             </div>
-            <div class="ingredient clickable" id="ingredient-meat-sauce">
-                <img src="images/meatSaucewithSeasoning.jpg" alt="Meat Sauce">
-                <p>Meat Sauce</p>
-            </div>
-            <div class="ingredient clickable" id="ingredient-noodles">
-                <img src="images/noodles.jpg" alt="Lasagna Noodles">
-                <p>Lasagna Noodles</p>
-            </div>
-            <div class="ingredient clickable" id="ingredient-cheese-mixture">
-                <img src="images/CheeseMix.jpg" alt="Cheese Mixture">
-                <p>Cheese Mixture</p>
+    
+            <!-- Dish image on the right side -->
+            <div id="main-image">
+                <div id="dish-container">
+                    <img id="current-image" src="images/lasagnaDish.jpg" alt="Empty Lasagna Dish">
+                </div>
             </div>
         </div>
-        
-        <div id="main-image">
-            <img id="current-image" src="images/lasagnaDish.jpg" alt="Empty Lasagna Dish">
-        </div>
-
+    
         <div id="instruction">
             <p>Click the ingredients to assemble the lasagna!</p>
         </div>
+        <a href="index.html" target="_blank">
+            <button>Back to Recipe</button>
+        </a>
     </main>
+    
 
     <footer>
         <p>&copy; 2024 Delicious Recipes. Lea Wilhelmer</p>

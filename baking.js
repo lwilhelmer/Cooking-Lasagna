@@ -60,3 +60,12 @@ function startBroilTimer() {
         alert("Baking process complete! Rest before serving.");
     }, broilTime * 1000);
 }
+
+function skipToFinished() {
+    clearInterval(timerInterval); // Stop any running timers
+    document.getElementById("baking-instructions").textContent = "Your lasagna is ready!";
+    document.getElementById("lasagna-img").src = "images/Lasagna.jpg"; // Show finished lasagna image
+    document.getElementById("timer").style.display = "none"; // Hide the timer
+    document.getElementById("start-timer").style.display = "none"; // Hide the start timer button
+    document.getElementById("additional-steps").style.display = "none"; // Hide additional steps
+}
